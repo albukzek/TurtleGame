@@ -18,14 +18,18 @@ namespace TurtleGame
             var eat = Shapes.AddRectangle(10, 10);
             int x = 200;
             int y = 200;
+            Random r = new Random();
             Shapes.Move(eat, x, y);
             while(true)
             {
                 Turtle.Move(10);
-                if ( Turtle.X == x && Turtle.Y == y)
+                if (Turtle.X >= x && Turtle.X <= x + 10 && Turtle.Y >= y && Turtle.Y <= y + 10)
                 {
-                    x += 20;
+                    
+                    x = r.Next(0 , GraphicsWindow.Width);
+                    y = r.Next(0, GraphicsWindow.Height);
                     Shapes.Move(eat, x, y);
+                    Turtle.Speed++;
                 }
             }
         }
